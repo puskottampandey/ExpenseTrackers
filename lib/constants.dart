@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 const kPrimaryDarkColor = Color(0xff0D0E0F);
 const kseconadaryDarkColor = Color(0xff161719);
@@ -41,14 +42,14 @@ const klightBlueColor = Color(0xff8AC0FF);
 const kverylightBlueColor = Color(0xff8AC0FF);
 const kvvlightBlueColor = Color(0xffBDDCFF);
 
-const double titleX = 64;
-const double title1 = 32;
-const double title2 = 24;
-const double title3 = 18;
-const double regular2 = 16;
-const double regular3 = 14;
-const double small13 = 13;
-const double tiny = 12;
+double titleX = 60.sp;
+double title1 = 28.sp;
+double title2 = 20.sp;
+double title3 = 14.sp;
+double regular2 = 12.sp;
+double regular3 = 10.sp;
+double small13 = 9.sp;
+double tiny = 8.sp;
 
 TextTheme textTheme = const TextTheme(
   headlineLarge: TextStyle(

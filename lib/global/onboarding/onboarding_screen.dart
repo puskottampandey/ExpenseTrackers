@@ -1,9 +1,10 @@
 import 'package:expensetracker/constants.dart';
 import 'package:expensetracker/global/onboarding/model/onboarding_model.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:expensetracker/global/reuseable/button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -58,11 +59,13 @@ class OnboardingScreen extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Lottie.asset(data.image.toString()),
+                              Lottie.asset(
+                                data.image.toString(),
+                              ),
                               Text(
                                 data.title.toString(),
                                 style: textTheme.bodyLarge!.copyWith(
-                                  fontSize: 20.sp,
+                                  fontSize: title1,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 maxLines: 2,
@@ -72,7 +75,7 @@ class OnboardingScreen extends ConsumerWidget {
                               Text(
                                 data.des.toString(),
                                 style: textTheme.bodyLarge!.copyWith(
-                                  fontSize: 12.sp,
+                                  fontSize: regular2,
                                   color: kPrimarylightColor,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -91,44 +94,58 @@ class OnboardingScreen extends ConsumerWidget {
                     count: onboarding.length,
                     effect: const WormEffect(
                       activeDotColor: kPrimaryVoiletColor,
-                      
                     ),
                   ),
                   SizedBox(
                     height: 100.h,
                   ),
                   Align(
-                    alignment: Alignment.bottomCenter,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          minimumSize: Size(300.w, 40.h),
-                          backgroundColor: kPrimaryVoiletColor,
-                        ),
-                        onPressed: () {
-                          controller.nextPage(
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeIn);
-                        },
-                        child: current == 2
-                            ? textStyle("Sign Up",kvverylightColor)
-                            : textStyle("Continue",kvverylightColor)),
-                  ),
+                      alignment: Alignment.bottomCenter,
+                      child: ReuseableButton(
+                        bgcolor: kPrimaryVoiletColor,
+                        text: current == 2 ? "Sign UP" : "Continue",
+                        textcolor: kvverylightColor,
+                      )
+                      //  ElevatedButton(
+                      //     style: ElevatedButton.styleFrom(
+                      //       elevation: 0,
+                      //       minimumSize: Size(300.w, 40.h),
+                      //       backgroundColor: kPrimaryVoiletColor,
+                      //     ),
+                      //     onPressed: () {
+                      //       if (current == 2) {
+                      //         context.push('/signup');
+                      //       } else {
+                      //         controller.nextPage(
+                      //             duration: const Duration(milliseconds: 300),
+                      //             curve: Curves.easeIn);
+                      //       }
+                      //     },
+                      //     child: current == 2
+                      //         ? textStyle("Sign Up", kvverylightColor)
+                      //         : textStyle("Continue", kvverylightColor)),
+                      ),
                   SizedBox(
                     height: 10.h,
                   ),
                   current == 2
                       ? Align(
                           alignment: Alignment.bottomCenter,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                elevation: 0,
-                                minimumSize: Size(300.w, 40.h),
-                                backgroundColor: kvveryViloetlightColor,
-                              ),
-                              onPressed: () {},
-                              child: textStyle("Login",kPrimaryVoiletColor)),
-                        )
+                          child: ReuseableButton(
+                            text: "Login",
+                            textcolor: kPrimaryVoiletColor,
+                            ontap: () {},
+                            bgcolor: kvveryViloetlightColor,
+                          )
+                          //  ElevatedButton(
+                          //     style: ElevatedButton.styleFrom(
+                          //       elevation: 0,
+                          //       minimumSize: Size(300.w, 40.h),
+                          //       backgroundColor: kvveryViloetlightColor,
+                          //     ),
+                          //     onPressed: () {},
+                          //     child: textStyle("Login", kPrimaryVoiletColor)),
+                          )
                       : Container(height: 40.h)
                 ],
               ),
@@ -137,12 +154,12 @@ class OnboardingScreen extends ConsumerWidget {
         ));
   }
 
-  Text textStyle(String text,Color color) {
+  Text textStyle(String text, Color color) {
     return Text(
       text,
       style: textTheme.bodyLarge!.copyWith(
-        fontSize: 14.sp,
-        color:color,
+        fontSize: title3,
+        color: color,
         fontWeight: FontWeight.bold,
       ),
     );
