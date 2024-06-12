@@ -65,7 +65,7 @@ class OnboardingScreen extends ConsumerWidget {
                               Text(
                                 data.title.toString(),
                                 style: textTheme.bodyLarge!.copyWith(
-                                  fontSize: title1,
+                                  fontSize: title2,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 maxLines: 2,
@@ -103,8 +103,17 @@ class OnboardingScreen extends ConsumerWidget {
                       alignment: Alignment.bottomCenter,
                       child: ReuseableButton(
                         bgcolor: kPrimaryVoiletColor,
-                        text: current == 2 ? "Sign UP" : "Continue",
+                        text: current == 2 ? "Sign Up" : "Continue",
                         textcolor: kvverylightColor,
+                        ontap: () {
+                          if (current == 2) {
+                            context.push('/signup');
+                          } else {
+                            controller.nextPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeIn);
+                          }
+                        },
                       )
                       //  ElevatedButton(
                       //     style: ElevatedButton.styleFrom(
@@ -154,14 +163,14 @@ class OnboardingScreen extends ConsumerWidget {
         ));
   }
 
-  Text textStyle(String text, Color color) {
-    return Text(
-      text,
-      style: textTheme.bodyLarge!.copyWith(
-        fontSize: title3,
-        color: color,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
+  // Text textStyle(String text, Color color) {
+  //   return Text(
+  //     text,
+  //     style: textTheme.bodyLarge!.copyWith(
+  //       fontSize: title3,
+  //       color: color,
+  //       fontWeight: FontWeight.bold,
+  //     ),
+  //   );
+  // }
 }
