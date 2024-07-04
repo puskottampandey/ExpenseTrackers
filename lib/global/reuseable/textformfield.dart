@@ -12,7 +12,7 @@ class ReusableFormField extends StatefulWidget {
   final String? hint;
   final String? initialValue;
   final String? label;
-   final String? labeltext;
+  final String? labeltext;
   final bool obscureText;
   final bool isChirfaar;
   final TextInputType keyboardType;
@@ -20,6 +20,7 @@ class ReusableFormField extends StatefulWidget {
   final int minLines;
   final int? maxLength;
   final String? desc;
+
   final bool? enabled;
   final IconData? prefix;
   final Widget? sufixIcon;
@@ -69,7 +70,8 @@ class ReusableFormField extends StatefulWidget {
     this.readonly = false,
     this.inputFormatter,
     this.contentPadding,
-    this.focusNode, this.labeltext,
+    this.focusNode,
+    this.labeltext,
   });
 
   @override
@@ -120,7 +122,7 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Material(
-            shadowColor:kwhitelightColor,
+            shadowColor: kwhitelightColor,
             borderRadius: BorderRadius.circular(8.h),
             child: formField(context),
           ),
@@ -148,13 +150,13 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
       textAlignVertical: TextAlignVertical.center,
       inputFormatters: widget.inputFormatter,
       decoration: InputDecoration(
-         labelText: widget.labeltext,
+        labelText: widget.labeltext,
         counterText: "",
         filled: widget.isFilled,
         fillColor: Colors.white54,
         hintText: widget.hint,
-        hintStyle: textTheme.titleSmall
-            ?.copyWith(color: Colors.grey, fontSize: 14.sp),
+        hintStyle:
+            textTheme.titleSmall?.copyWith(color: Colors.grey, fontSize: 14.sp),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.h),
             borderSide: const BorderSide(color: kPrimarylightColor)),
@@ -164,7 +166,7 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
         ),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.h),
-            borderSide:const  BorderSide(color: kPrimarylightColor)),
+            borderSide: const BorderSide(color: kPrimarylightColor)),
         prefixIcon: widget.prefix != null
             ? Icon(
                 widget.prefix,
@@ -185,7 +187,7 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
                             obscureText
                                 ? Icons.visibility_off_outlined
                                 : Icons.visibility_outlined,
-                            color:kPrimaryDarkColor,
+                            color: kPrimaryDarkColor,
                           ),
                           onPressed: () {
                             setState(() {
@@ -247,46 +249,43 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
     final totalChar = widget.controller!.text.length >= 8;
 
     return widget.validation
-        ? widget.controller!.text.isNotEmpty
-            ? Column(
-                children: [
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  LinearProgressIndicator(
-                    borderRadius: BorderRadius.circular(8.r),
-                    value: _strength / 100,
-                    backgroundColor:kPrimarylightColor,
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      _getColorForStrength(_strength),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  PassWordValidation(
-                      passCheck: lowerUpper,
-                      requirementText:
-                          "One Uppercase [A-Z] and One lowercase [a-z]"),
-                  PassWordValidation(
-                      passCheck: number,
-                      requirementText: "One numeric value [0-9]]"),
-                  PassWordValidation(
-                      passCheck: unique,
-                      requirementText:
-                          "One special character [#, \$, % etc..]"),
-                  PassWordValidation(
-                      passCheck: totalChar,
-                      requirementText: "8 characters minimum")
-                ],
-              )
-            : Container()
+        ? Column(
+            children: [
+              SizedBox(
+                height: 5.h,
+              ),
+              LinearProgressIndicator(
+                borderRadius: BorderRadius.circular(8.r),
+                value: _strength / 100,
+                backgroundColor: kPrimarylightColor,
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  _getColorForStrength(_strength),
+                ),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              PassWordValidation(
+                  passCheck: lowerUpper,
+                  requirementText:
+                      "One Uppercase [A-Z] and One lowercase [a-z]"),
+              PassWordValidation(
+                  passCheck: number,
+                  requirementText: "One numeric value [0-9]]"),
+              PassWordValidation(
+                  passCheck: unique,
+                  requirementText: "One special character [#, \$, % etc..]"),
+              PassWordValidation(
+                  passCheck: totalChar, requirementText: "8 characters minimum")
+            ],
+          )
+        // : Container()
         : widget.showError
             ? errorText != null
                 ? Row(
                     children: [
                       const Icon(Icons.error_outline_rounded,
-                          size: 14, color:kPrimaryRedColor),
+                          size: 14, color: kPrimaryRedColor),
                       const SizedBox(
                         width: 5,
                       ),
@@ -294,7 +293,7 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
                         child: Text(
                           errorText ?? "",
                           maxLines: 2,
-                          style:textTheme.titleMedium!.copyWith(
+                          style: textTheme.titleMedium!.copyWith(
                               color: kPrimaryRedColor, fontSize: 12.sp),
                         ),
                       ),

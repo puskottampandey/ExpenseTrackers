@@ -88,3 +88,14 @@ TextTheme textTheme = const TextTheme(
     fontSize: 12,
   ),
 );
+
+class ImportantKey {
+  static const khaltiKey = "test_public_key_d9eab2e2d2ed4d98b313c37145938853";
+  static const clientId =
+      "JB0BBQ4aD0UqIThFJwAKBgAXEUkEGQUBBAwdOgABHD4DChwUAB0R";
+  static const secretKey = "BhwIWQQADhIYSxILExMcAgFXFhcOBwAKBgAXEQ==";
+  static RegExp passwordCheck =
+      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$%&*~]).{8,}$');
+  static RegExp emailCheck = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+}

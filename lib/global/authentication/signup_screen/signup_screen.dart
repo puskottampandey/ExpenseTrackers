@@ -13,7 +13,9 @@ class SignupScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool check = true;
+    final nameController = ref.watch(nametext);
+    final emailController = ref.watch(emailtext);
+    final passwordController = ref.watch(passwordtext);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -26,38 +28,69 @@ class SignupScreen extends ConsumerWidget {
           ),
         ),
       ),
-      body: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 16.w,
-            vertical: 16.h,
-          ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 80.h,
-              ),
-              const ReusableFormField(
-                labeltext: "Name",
-              ),
-              const ReusableFormField(
-                labeltext: "Email",
-              ),
-              const ReusableFormField(
-                labeltext: "Password",
-                obscureText: true,
-              ),
-              Row(
-                children: [
-                  Checkbox(
-                    activeColor: kPrimaryVoiletColor,
-                    value: false,
-                    onChanged: (value) {},
-                  ),
-                  const Text("hello")
-                ],
-              )
-            ],
-          )),
+      body: SingleChildScrollView(
+        child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 16.w,
+              vertical: 16.h,
+            ),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 80.h,
+                ),
+                ReusableFormField(
+                  controller: nameController,
+                  textInputAction: TextInputAction.next,
+                  labeltext: "Name",
+                  keyboardType: TextInputType.text,
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Enter a first name";
+                    }
+                    return null;
+                  },
+                ),
+                ReusableFormField(
+                  textInputAction: TextInputAction.next,
+                  controller: emailController,
+                  labeltext: "Email",
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Enter a email";
+                    }
+                    return null;
+                  },
+                ),
+                ReusableFormField(
+                  controller: passwordController,
+                  textInputAction: TextInputAction.go,
+                  labeltext: "Password",
+                  validation: true,
+                  obscureText: true,
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Enter a password";
+                    } else if (!ImportantKey.passwordCheck.hasMatch(value)) {
+                      return "Enter a password";
+                    }
+                    return null;
+                  },
+                ),
+                Row(
+                  children: [
+                    Checkbox(
+                      activeColor: kPrimaryVoiletColor,
+                      value: false,
+                      onChanged: (value) {},
+                    ),
+                    const Text("hello")
+                  ],
+                )
+              ],
+            )),
+      ),
     );
   }
 }
