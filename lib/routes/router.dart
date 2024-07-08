@@ -57,7 +57,7 @@ final GoRouter router = GoRouter(
         name: RouteConstants.addnewaccount,
         path: '/addnewaccount',
         builder: (context, state) {
-          return const AddNewAccount();
+          return AddNewAccount();
         }),
   ],
 );
