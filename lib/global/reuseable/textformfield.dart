@@ -157,16 +157,38 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
         hintText: widget.hint,
         hintStyle:
             textTheme.titleSmall?.copyWith(color: Colors.grey, fontSize: 14.sp),
+        focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16.r),
+            borderSide: const BorderSide(
+              width: 2.0,
+              color: kPrimaryRedColor,
+            )),
+        errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16.r),
+            borderSide: const BorderSide(
+              width: 2.0,
+              color: kPrimaryRedColor,
+            )),
         focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.h),
-            borderSide: const BorderSide(color: kPrimarylightColor)),
+            borderRadius: BorderRadius.circular(16.r),
+            borderSide: const BorderSide(
+              color: kseconadarylightColor,
+              width: 2.0,
+            )),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.h),
-          borderSide: const BorderSide(color: kPrimarylightColor),
+          borderRadius: BorderRadius.circular(16.r),
+          borderSide: const BorderSide(
+            color: kseconadarylightColor,
+            width: 2.0,
+          ),
         ),
         enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.h),
-            borderSide: const BorderSide(color: kPrimarylightColor)),
+          borderRadius: BorderRadius.circular(16.r),
+          borderSide: const BorderSide(
+            color: kseconadarylightColor,
+            width: 2.0,
+          ),
+        ),
         prefixIcon: widget.prefix != null
             ? Icon(
                 widget.prefix,
@@ -187,7 +209,7 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
                             obscureText
                                 ? Icons.visibility_off_outlined
                                 : Icons.visibility_outlined,
-                            color: kPrimaryDarkColor,
+                            color: kPrimarylightColor,
                           ),
                           onPressed: () {
                             setState(() {
@@ -252,12 +274,12 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
         ? Column(
             children: [
               SizedBox(
-                height: 5.h,
+                height: 10.h,
               ),
               LinearProgressIndicator(
                 borderRadius: BorderRadius.circular(8.r),
                 value: _strength / 100,
-                backgroundColor: kPrimarylightColor,
+                backgroundColor: kseconadarylightColor,
                 valueColor: AlwaysStoppedAnimation<Color>(
                   _getColorForStrength(_strength),
                 ),
