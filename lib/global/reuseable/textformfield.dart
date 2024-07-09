@@ -134,6 +134,12 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
 
   TextFormField formField(BuildContext context) {
     return TextFormField(
+      style: textTheme.bodyLarge!.copyWith(
+        fontSize: regular2,
+        color: kPrimaryDarkColor,
+        fontWeight: FontWeight.bold,
+      ),
+      cursorColor: kPrimaryVoiletColor,
       minLines: widget.minLines,
       focusNode: widget.focusNode,
       autofocus: widget.autofocus ?? false,
@@ -155,8 +161,10 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
         filled: widget.isFilled,
         fillColor: Colors.white54,
         hintText: widget.hint,
-        hintStyle:
-            textTheme.titleSmall?.copyWith(color: Colors.grey, fontSize: 14.sp),
+        hintStyle: textTheme.titleSmall?.copyWith(
+          color: kverylightDarkColor,
+          fontSize: 12.sp,
+        ),
         focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.r),
             borderSide: const BorderSide(

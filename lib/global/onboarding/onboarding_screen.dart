@@ -126,7 +126,9 @@ class OnboardingScreen extends ConsumerWidget {
                         minimumSize: Size(300.w, 40.h),
                         text: "Login",
                         textcolor: kPrimaryVoiletColor,
-                        ontap: () {},
+                        ontap: () {
+                          context.go('/login');
+                        },
                         bgcolor: kvveryViloetlightColor,
                       ))
                   : Container(height: 40.h)
@@ -136,15 +138,4 @@ class OnboardingScreen extends ConsumerWidget {
       ),
     ));
   }
-
-  // Text textStyle(String text, Color color) {
-  //   return Text(
-  //     text,
-  //     style: textTheme.bodyLarge!.copyWith(
-  //       fontSize: title3,
-  //       color: color,
-  //       fontWeight: FontWeight.bold,
-  //     ),
-  //   );
-  // }
 }

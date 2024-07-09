@@ -76,6 +76,7 @@ class SignupScreen extends ConsumerWidget {
                         controller: passwordController,
                         textInputAction: TextInputAction.go,
                         hint: "Password",
+                        validation: true,
                         obscureText: true,
                         validator: (String? value) {
                           if (value == null || value.isEmpty) {
