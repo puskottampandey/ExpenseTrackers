@@ -8,4 +8,6 @@ class RouteConstants {
   static String accountSetup = "accountSetup";
   static String addnewaccount = "addnewaccount";
   static String connectionscreen = 'connectionscreen';
+  static String successscreen = 'successscreen';
+  static String homescreen = 'homescreen';
 }

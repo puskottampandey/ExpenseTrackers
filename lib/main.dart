@@ -34,7 +34,10 @@ class MyApp extends StatelessWidget {
 class NetworkListener extends ConsumerWidget {
   final Widget child;
 
-  const NetworkListener({required this.child});
+  const NetworkListener({
+    required this.child,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

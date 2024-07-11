@@ -42,6 +42,14 @@ const klightBlueColor = Color(0xff8AC0FF);
 const kverylightBlueColor = Color(0xff8AC0FF);
 const kvvlightBlueColor = Color(0xffBDDCFF);
 const backgroundColor = Color(0xffE5E5E5);
+const containergradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color(0xffF8EDD8),
+      Color(0xffFCF3E1),
+      Color(0xffFFF6E5),
+    ]);
 double titleX = 60.sp;
 double title1 = 28.sp;
 double title2 = 20.sp;

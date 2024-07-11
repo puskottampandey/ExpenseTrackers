@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 final name = AutoDisposeProvider((ref) => TextEditingController());
 final bank = AutoDisposeProvider((ref) => TextEditingController());
@@ -168,7 +169,9 @@ class AddNewAccount extends ConsumerWidget {
                           text: "Continue",
                           textcolor: kvverylightColor,
                           bgcolor: kPrimaryVoiletColor,
-                          ontap: () {},
+                          ontap: () {
+                            context.go("/successscreen");
+                          },
                         )
                       ],
                     ),

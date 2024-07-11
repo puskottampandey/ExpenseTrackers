@@ -7,4 +7,6 @@ class ImagePath {
   static String googleLogo = "$mainurl/google.png";
   static String onboardingThird = "$mainurl/llustration.svg";
   static String confirmLogo = "$mainurl/Rectangle 101.svg";
+  static String successLogo = "$mainurl/checked.png";
+  static String profileImage = "$mainurl/profile-picture.png";
 }

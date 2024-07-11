@@ -1,5 +1,6 @@
 import 'package:expensetracker/constants.dart';
 import 'package:expensetracker/global/reuseable/button.dart';
+import 'package:expensetracker/global/reuseable/image_path.dart';
 import 'package:expensetracker/global/reuseable/scaffoldscreen.dart';
 import 'package:expensetracker/global/reuseable/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -159,7 +160,7 @@ class SignupScreen extends ConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image.asset(
-                              "assets/images/google.png",
+                              ImagePath.googleLogo,
                               height: 18.h,
                             ),
                             Text(

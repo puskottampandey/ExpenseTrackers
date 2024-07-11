@@ -1,5 +1,7 @@
 import 'package:expensetracker/features/account_setup_screen/add_new_account.dart';
 import 'package:expensetracker/features/account_setup_screen/setup_account_screen.dart';
+import 'package:expensetracker/features/account_setup_screen/success_screen.dart';
+import 'package:expensetracker/features/home_screen/home_screen.dart';
 import 'package:expensetracker/global/authentication/confirm_screen/confrim_screen.dart';
 import 'package:expensetracker/global/authentication/forgot_pass/forgot_password.dart';
 import 'package:expensetracker/global/authentication/login_screen/login_sceen.dart';
@@ -68,6 +70,18 @@ final GoRouter router = GoRouter(
         path: '/connectionscreen',
         builder: (context, state) {
           return const ConnectionErrorScreen();
+        }),
+    GoRoute(
+        name: RouteConstants.successscreen,
+        path: '/successscreen',
+        builder: (context, state) {
+          return const SuccessScreen();
+        }),
+    GoRoute(
+        name: RouteConstants.homescreen,
+        path: '/homescreen',
+        builder: (context, state) {
+          return const HomeScreen();
         }),
   ],
 );

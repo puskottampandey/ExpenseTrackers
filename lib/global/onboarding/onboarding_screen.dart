@@ -29,7 +29,7 @@ class OnboardingScreen extends ConsumerWidget {
         des:
             "Track your transaction easily, with categories and financial report"),
     Onboarding(
-        image: ImagePath.animation3,
+        image: ImagePath.confirmLogo,
         title: "Planning ahead",
         des: "Setup your budget for each category so you in control"),
   ];
@@ -48,55 +48,12 @@ class OnboardingScreen extends ConsumerWidget {
           child: Column(
             children: [
               Expanded(
-                child: PageView.builder(
-                    controller: controller,
-                    onPageChanged: (value) {
-                      ref.read(currentPage.notifier).state = value;
-                    },
-                    itemCount: onboarding.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final data = onboarding[index];
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Lottie.asset(
-                            data.image.toString(),
-                          ),
-                          Text(
-                            data.title.toString(),
-                            style: textTheme.bodyLarge!.copyWith(
-                              fontSize: title2,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(height: 10.h),
-                          Text(
-                            data.des.toString(),
-                            style: textTheme.bodyLarge!.copyWith(
-                              fontSize: regular2,
-                              color: kPrimarylightColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      );
-                    }),
+                child: pageView(ref),
               ),
               SizedBox(
                 height: 10.h,
               ),
-              SmoothPageIndicator(
-                controller: controller,
-                count: onboarding.length,
-                effect: const WormEffect(
-                  activeDotColor: kPrimaryVoiletColor,
-                ),
-              ),
+              smoothPage(),
               SizedBox(
                 height: 100.h,
               ),
@@ -138,5 +95,56 @@ class OnboardingScreen extends ConsumerWidget {
         ),
       ),
     ));
+  }
+
+  SmoothPageIndicator smoothPage() {
+    return SmoothPageIndicator(
+      controller: controller,
+      count: onboarding.length,
+      effect: const WormEffect(
+        activeDotColor: kPrimaryVoiletColor,
+      ),
+    );
+  }
+
+  PageView pageView(WidgetRef ref) {
+    return PageView.builder(
+        controller: controller,
+        onPageChanged: (value) {
+          ref.read(currentPage.notifier).state = value;
+        },
+        itemCount: onboarding.length,
+        itemBuilder: (BuildContext context, int index) {
+          final data = onboarding[index];
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Lottie.asset(
+                data.image.toString(),
+              ),
+              Text(
+                data.title.toString(),
+                style: textTheme.bodyLarge!.copyWith(
+                  fontSize: title2,
+                  fontWeight: FontWeight.bold,
+                ),
+                maxLines: 2,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 10.h),
+              Text(
+                data.des.toString(),
+                style: textTheme.bodyLarge!.copyWith(
+                  fontSize: regular2,
+                  color: kPrimarylightColor,
+                  fontWeight: FontWeight.bold,
+                ),
+                maxLines: 2,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          );
+        });
   }
 }
