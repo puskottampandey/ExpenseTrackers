@@ -7,4 +7,5 @@ class RouteConstants {
   static String confirmScreen = "confirmScreen";
   static String accountSetup = "accountSetup";
   static String addnewaccount = "addnewaccount";
+  static String connectionscreen = 'connectionscreen';
 }

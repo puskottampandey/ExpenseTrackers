@@ -4,12 +4,16 @@ import 'package:expensetracker/global/authentication/confirm_screen/confrim_scre
 import 'package:expensetracker/global/authentication/forgot_pass/forgot_password.dart';
 import 'package:expensetracker/global/authentication/login_screen/login_sceen.dart';
 import 'package:expensetracker/global/authentication/signup_screen/signup_screen.dart';
+import 'package:expensetracker/global/connection_check/connection_error_screen.dart';
 import 'package:expensetracker/global/onboarding/onboarding_screen.dart';
 import 'package:expensetracker/global/splash_screen.dart';
 import 'package:expensetracker/routes/route_constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final GoRouter router = GoRouter(
+  navigatorKey: navigatorKey,
   routes: [
     GoRoute(
         name: RouteConstants.splashScreen,
@@ -58,6 +62,12 @@ final GoRouter router = GoRouter(
         path: '/addnewaccount',
         builder: (context, state) {
           return AddNewAccount();
+        }),
+    GoRoute(
+        name: RouteConstants.connectionscreen,
+        path: '/connectionscreen',
+        builder: (context, state) {
+          return const ConnectionErrorScreen();
         }),
   ],
 );

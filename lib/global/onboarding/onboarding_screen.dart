@@ -1,6 +1,7 @@
 import 'package:expensetracker/constants.dart';
 import 'package:expensetracker/global/onboarding/model/onboarding_model.dart';
 import 'package:expensetracker/global/reuseable/button.dart';
+import 'package:expensetracker/global/reuseable/image_path.dart';
 import 'package:expensetracker/global/reuseable/scaffoldscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,16 +20,16 @@ class OnboardingScreen extends ConsumerWidget {
 
   List<Onboarding> onboarding = [
     Onboarding(
-        image: "assets/images/Animation2.json",
+        image: ImagePath.animation2,
         title: "Gain total control of your money",
         des: "Become your own money manager and make every cent count"),
     Onboarding(
-        image: "assets/images/Animation1.json",
+        image: ImagePath.animation1,
         title: "Know where your money goes",
         des:
             "Track your transaction easily, with categories and financial report"),
     Onboarding(
-        image: "assets/images/Animation 3.json",
+        image: ImagePath.animation3,
         title: "Planning ahead",
         des: "Setup your budget for each category so you in control"),
   ];
