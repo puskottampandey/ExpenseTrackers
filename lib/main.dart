@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:expensetracker/global/connection_check/connection_controller.dart';
 import 'package:expensetracker/routes/router.dart';
 import 'package:flutter/material.dart';
@@ -12,36 +13,35 @@ void main() {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return NetworkListener(
-      child: ScreenUtilInit(
-          designSize: const Size(360, 690),
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (_, child) {
-            return MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              routerConfig: router,
-            );
-          }),
-    );
-  }
-}
-
-class NetworkListener extends ConsumerWidget {
-  final Widget child;
-
-  const NetworkListener({
-    required this.child,
-    super.key,
-  });
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(networkControllerProvider);
-    return child;
+    return ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            routerConfig: router,
+          );
+        });
   }
 }
+
+
+// class NetworkListener extends ConsumerWidget {
+//   final Widget child;
+
+//   const NetworkListener({
+//     required this.child,
+//     super.key,
+//   });
+
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     return child;
+//   }
+// }

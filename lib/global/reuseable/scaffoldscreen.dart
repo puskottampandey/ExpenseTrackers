@@ -8,6 +8,10 @@ class ReuseableScaffold extends StatelessWidget {
   final bool? back;
   final bool? changeColor;
   final Color? color;
+  final bool? bottomnavigation;
+  final Widget? bottomnavigationWidget;
+  final Widget? floatingActionButton;
+
   const ReuseableScaffold({
     this.text,
     this.appbar = false,
@@ -15,13 +19,21 @@ class ReuseableScaffold extends StatelessWidget {
     this.changeColor = false,
     this.color,
     this.child,
+    this.bottomnavigation = false,
+    this.bottomnavigationWidget,
+    this.floatingActionButton,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation:
+          bottomnavigation! ? FloatingActionButtonLocation.centerDocked : null,
+      floatingActionButton:
+          bottomnavigation! ? floatingActionButton : Container(),
       backgroundColor: changeColor! ? color : kvverylightColor,
+      bottomNavigationBar: bottomnavigation! ? bottomnavigationWidget : null,
       appBar: appbar
           ? AppBar(
               automaticallyImplyLeading: back! ? true : false,
