@@ -52,6 +52,7 @@ const containergradient = LinearGradient(
     ]);
 double titleX = 60.sp;
 double title1 = 28.sp;
+double title0 = 24.sp;
 double title2 = 20.sp;
 double title3 = 14.sp;
 double regular2 = 12.sp;

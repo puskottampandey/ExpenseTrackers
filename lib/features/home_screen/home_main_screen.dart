@@ -1,15 +1,19 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:circular_menu/circular_menu.dart';
 import 'package:expensetracker/constants.dart';
 import 'package:expensetracker/features/home_screen/views/budget/budget_screen.dart';
 import 'package:expensetracker/features/home_screen/views/home/home_screen.dart';
 import 'package:expensetracker/features/home_screen/views/profile/profile_screen.dart';
 import 'package:expensetracker/features/home_screen/views/transaction/transaction_screen.dart';
 import 'package:expensetracker/global/reuseable/scaffoldscreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 final currentindex = StateProvider((ref) => 0);
+final stacktapped = StateProvider((ref) => false);
 
 class HomeScreenMain extends ConsumerWidget {
   const HomeScreenMain({super.key});
@@ -17,6 +21,7 @@ class HomeScreenMain extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final index = ref.watch(currentindex);
+    final stackchanged = ref.watch(stacktapped);
 
     final List<Widget> screens = [
       const HomeScreen(),
@@ -39,30 +44,36 @@ class HomeScreenMain extends ConsumerWidget {
     ];
     return ReuseableScaffold(
         bottomnavigation: true,
-        floatingActionButton: Ink(
-            height: 40.h,
-            width: 20.w,
-            decoration: const BoxDecoration(
-              color: kPrimaryVoiletColor,
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.add,
-              color: kvverylightColor,
-            )),
+        floatingActionButton: FloatingActionButton(
+            shape: const CircleBorder(),
+            backgroundColor: kPrimaryVoiletColor,
+            onPressed: () {
+              ref.read(stacktapped.notifier).state =
+                  !ref.read(stacktapped.notifier).state;
+            },
+            child: stackchanged
+                ? Icon(
+                    Icons.close,
+                    color: kvverylightColor,
+                    size: 24.sp,
+                  )
+                : Icon(
+                    Icons.add,
+                    color: kvverylightColor,
+                    size: 24.sp,
+                  )),
         bottomnavigationWidget: AnimatedBottomNavigationBar.builder(
             onTap: (index) {
               ref.read(currentindex.notifier).state = index;
             },
             activeIndex: index,
             itemCount: iconList.length,
-            leftCornerRadius: 32,
-            rightCornerRadius: 32,
             gapLocation: GapLocation.center,
             notchSmoothness: NotchSmoothness.defaultEdge,
-            // notchSmoothness: NotchSmoothness.verySmoothEdge,
             tabBuilder: (int index, isActive) {
               return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Icon(
                     iconList[index],
@@ -79,23 +90,61 @@ class HomeScreenMain extends ConsumerWidget {
                   ),
                 ],
               );
-              // activeColor: kPrimaryVoiletColor,
-              // inactiveColor: kPrimarylightColor,
-              // iconSize: 30.sp,
-              // icons: iconList,
-              // activeIndex: index,
-              // gapLocation: GapLocation.center,
-              // notchSmoothness: NotchSmoothness.softEdge,
-
-              // onTap: (index) {
-              //   print(index);
-              //   ref.read(currentindex.notifier).state = index;
-              // }),
             }),
-        child: screens[index]
-        //  Center(creens
-        //   child: const Text("hello"),
-        // ),
-        );
+        child: Stack(
+          children: [
+            screens[index],
+            stackchanged
+                ? Positioned(
+                    left: 220.w,
+                    bottom: 20.h,
+                    child: decoratedContainer(
+                      color: kPrimaryRedColor,
+                      icon: Icons.downloading,
+                    ),
+                  )
+                : Container(),
+            stackchanged
+                ? Positioned(
+                    bottom: 20.h,
+                    left: 100.w,
+                    child: decoratedContainer(
+                      color: kPrimaryGreenColor,
+                      icon: Icons.upgrade,
+                    ),
+                  )
+                : Container(),
+            stackchanged
+                ? Positioned(
+                    bottom: 70.h,
+                    left: 160.w,
+                    child: decoratedContainer(
+                        color: kPrimaryBlueColor,
+                        icon: Icons.currency_exchange,
+                        ontap: () {}),
+                  )
+                : Container(),
+          ],
+        ));
+  }
+
+  Container decoratedContainer({
+    Color? color,
+    IconData? icon,
+    Function()? ontap,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+      ),
+      child: IconButton(
+        onPressed: ontap,
+        icon: Icon(
+          icon,
+          color: kvverylightColor,
+        ),
+      ),
+    );
   }
 }

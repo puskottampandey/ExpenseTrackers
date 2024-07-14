@@ -30,8 +30,7 @@ class ReuseableScaffold extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation:
           bottomnavigation! ? FloatingActionButtonLocation.centerDocked : null,
-      floatingActionButton:
-          bottomnavigation! ? floatingActionButton : Container(),
+      floatingActionButton: bottomnavigation! ? floatingActionButton : null,
       backgroundColor: changeColor! ? color : kvverylightColor,
       bottomNavigationBar: bottomnavigation! ? bottomnavigationWidget : null,
       appBar: appbar
