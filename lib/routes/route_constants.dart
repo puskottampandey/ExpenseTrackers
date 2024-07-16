@@ -10,4 +10,7 @@ class RouteConstants {
   static String connectionscreen = 'connectionscreen';
   static String successscreen = 'successscreen';
   static String homescreen = 'homescreen';
+  static String expensescreen = "expensescreen";
+  static String incomescreen = "incomescreen";
+  static String transactionscreen = "transactionscreen";
 }

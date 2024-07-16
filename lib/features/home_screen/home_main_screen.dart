@@ -5,12 +5,15 @@ import 'package:expensetracker/features/home_screen/views/budget/budget_screen.d
 import 'package:expensetracker/features/home_screen/views/home/home_screen.dart';
 import 'package:expensetracker/features/home_screen/views/profile/profile_screen.dart';
 import 'package:expensetracker/features/home_screen/views/transaction/transaction_screen.dart';
+import 'package:expensetracker/global/reuseable/image_path.dart';
 import 'package:expensetracker/global/reuseable/scaffoldscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 final currentindex = StateProvider((ref) => 0);
 final stacktapped = StateProvider((ref) => false);
@@ -46,7 +49,8 @@ class HomeScreenMain extends ConsumerWidget {
         bottomnavigation: true,
         floatingActionButton: FloatingActionButton(
             shape: const CircleBorder(),
-            backgroundColor: kPrimaryVoiletColor,
+            backgroundColor:
+                stackchanged ? kseconadarylightColor : kPrimaryVoiletColor,
             onPressed: () {
               ref.read(stacktapped.notifier).state =
                   !ref.read(stacktapped.notifier).state;
@@ -99,9 +103,11 @@ class HomeScreenMain extends ConsumerWidget {
                     left: 220.w,
                     bottom: 20.h,
                     child: decoratedContainer(
-                      color: kPrimaryRedColor,
-                      icon: Icons.downloading,
-                    ),
+                        color: kPrimaryRedColor,
+                        icon: ImagePath.expenseLogo,
+                        ontap: () {
+                          context.push("/expensescreen");
+                        }),
                   )
                 : Container(),
             stackchanged
@@ -109,9 +115,11 @@ class HomeScreenMain extends ConsumerWidget {
                     bottom: 20.h,
                     left: 100.w,
                     child: decoratedContainer(
-                      color: kPrimaryGreenColor,
-                      icon: Icons.upgrade,
-                    ),
+                        color: kPrimaryGreenColor,
+                        icon: ImagePath.incomeLogo,
+                        ontap: () {
+                          context.push("/incomescreen");
+                        }),
                   )
                 : Container(),
             stackchanged
@@ -120,8 +128,10 @@ class HomeScreenMain extends ConsumerWidget {
                     left: 160.w,
                     child: decoratedContainer(
                         color: kPrimaryBlueColor,
-                        icon: Icons.currency_exchange,
-                        ontap: () {}),
+                        icon: ImagePath.moneyExchange,
+                        ontap: () {
+                          context.push("/transactionscreen");
+                        }),
                   )
                 : Container(),
           ],
@@ -130,19 +140,26 @@ class HomeScreenMain extends ConsumerWidget {
 
   Container decoratedContainer({
     Color? color,
-    IconData? icon,
+    String? icon,
     Function()? ontap,
   }) {
     return Container(
+      padding: EdgeInsets.symmetric(
+        vertical: 4.h,
+        horizontal: 4.w,
+      ),
       decoration: BoxDecoration(
         color: color,
         shape: BoxShape.circle,
       ),
       child: IconButton(
         onPressed: ontap,
-        icon: Icon(
-          icon,
-          color: kvverylightColor,
+        icon: SvgPicture.asset(
+          icon!,
+          colorFilter: const ColorFilter.mode(
+            kvverylightColor,
+            BlendMode.srcIn,
+          ),
         ),
       ),
     );

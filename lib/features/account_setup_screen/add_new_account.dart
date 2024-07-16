@@ -68,7 +68,6 @@ class AddNewAccount extends ConsumerWidget {
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(32.r),
                           topRight: Radius.circular(32.r))),
-                  height: 260.h,
                   child: Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),

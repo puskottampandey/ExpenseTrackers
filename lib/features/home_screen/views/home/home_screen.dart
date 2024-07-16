@@ -5,6 +5,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 final changedindex = StateProvider((ref) => 0);
 
@@ -121,12 +122,12 @@ class HomeScreen extends ConsumerWidget {
                     children: [
                       rowContainer(
                           color: kPrimaryGreenColor,
-                          icon: Icons.upgrade,
+                          image: ImagePath.incomeLogo,
                           text: "Income",
                           number: "Rs. 12000"),
                       rowContainer(
                           color: kPrimaryRedColor,
-                          icon: Icons.downloading,
+                          image: ImagePath.expenseLogo,
                           text: "Expense",
                           number: "Rs. 12000")
                     ],
@@ -136,7 +137,7 @@ class HomeScreen extends ConsumerWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                vertical: 5.h,
+                vertical: 8.h,
                 horizontal: 16.w,
               ),
               child: Column(
@@ -234,12 +235,13 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ),
               padding: EdgeInsets.symmetric(
-                vertical: 12.h,
+                vertical: 10.h,
                 horizontal: 16.w,
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.badge,
                 color: kPrimaryYellowColor,
+                size: 26.sp,
               ),
             ),
             title: Text(
@@ -250,12 +252,15 @@ class HomeScreen extends ConsumerWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            subtitle: Text(
-              "Buy some vegetables",
-              style: textTheme.bodyLarge!.copyWith(
-                fontSize: regular3,
-                color: kPrimarylightColor,
-                fontWeight: FontWeight.w500,
+            subtitle: Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.h),
+              child: Text(
+                "Buy some vegetables",
+                style: textTheme.bodyLarge!.copyWith(
+                  fontSize: regular3,
+                  color: kPrimarylightColor,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
             trailing: Column(
@@ -268,6 +273,9 @@ class HomeScreen extends ConsumerWidget {
                     color: kPrimaryRedColor,
                     fontWeight: FontWeight.w600,
                   ),
+                ),
+                SizedBox(
+                  height: 5.h,
                 ),
                 Text(
                   "10:00 Am",
@@ -377,7 +385,7 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Container rowContainer(
-      {Color? color, IconData? icon, String? text, String? number}) {
+      {Color? color, String? image, String? text, String? number}) {
     return Container(
         padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
         decoration: BoxDecoration(
@@ -397,9 +405,12 @@ class HomeScreen extends ConsumerWidget {
               decoration: BoxDecoration(
                   color: kvverylightColor,
                   borderRadius: BorderRadius.circular(16.r)),
-              child: Icon(
-                icon,
-                color: color,
+              child: SvgPicture.asset(
+                image!,
+                colorFilter: ColorFilter.mode(
+                  color!,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
             SizedBox(

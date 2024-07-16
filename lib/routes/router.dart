@@ -2,6 +2,9 @@ import 'package:expensetracker/features/account_setup_screen/add_new_account.dar
 import 'package:expensetracker/features/account_setup_screen/setup_account_screen.dart';
 import 'package:expensetracker/features/account_setup_screen/success_screen.dart';
 import 'package:expensetracker/features/home_screen/home_main_screen.dart';
+import 'package:expensetracker/features/home_screen/views/expense/expense_screen.dart';
+import 'package:expensetracker/features/home_screen/views/income/income_screen.dart';
+import 'package:expensetracker/features/home_screen/views/transaction/transaction_screen.dart';
 import 'package:expensetracker/global/authentication/confirm_screen/confrim_screen.dart';
 import 'package:expensetracker/global/authentication/forgot_pass/forgot_password.dart';
 import 'package:expensetracker/global/authentication/login_screen/login_sceen.dart';
@@ -82,6 +85,24 @@ final GoRouter router = GoRouter(
         path: '/homescreen',
         builder: (context, state) {
           return const HomeScreenMain();
+        }),
+    GoRoute(
+        name: RouteConstants.expensescreen,
+        path: '/expensescreen',
+        builder: (context, state) {
+          return const ExpenseScreen();
+        }),
+    GoRoute(
+        name: RouteConstants.incomescreen,
+        path: '/incomescreen',
+        builder: (context, state) {
+          return const IncomeScreen();
+        }),
+    GoRoute(
+        name: RouteConstants.transactionscreen,
+        path: '/transactionscreen',
+        builder: (context, state) {
+          return const TransactionScreen();
         }),
   ],
 );

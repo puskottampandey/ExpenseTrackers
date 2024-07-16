@@ -39,8 +39,7 @@ class ReuseableScaffold extends StatelessWidget {
               iconTheme: IconThemeData(
                   color: changeColor! ? kvverylightColor : kPrimaryDarkColor),
               centerTitle: true,
-              backgroundColor:
-                  changeColor! ? kPrimaryVoiletColor : kvverylightColor,
+              backgroundColor: changeColor! ? color : kvverylightColor,
               title: Text(
                 text!,
                 style: textTheme.bodyLarge!.copyWith(
