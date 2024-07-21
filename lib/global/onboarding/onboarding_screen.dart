@@ -1,8 +1,8 @@
-import 'package:expensetracker/constants.dart';
+import 'package:expensetracker/constants/constants.dart';
 import 'package:expensetracker/global/connection_check/connection_controller.dart';
 import 'package:expensetracker/global/onboarding/model/onboarding_model.dart';
 import 'package:expensetracker/global/reuseable/button.dart';
-import 'package:expensetracker/global/reuseable/image_path.dart';
+import 'package:expensetracker/constants/image_path.dart';
 import 'package:expensetracker/global/reuseable/scaffoldscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,63 +39,64 @@ class OnboardingScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final current = ref.watch(currentPage);
     return ReuseableScaffold(
+        light: true,
         child: SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 16.w,
-          vertical: 16.h,
-        ),
-        child: Center(
-          child: Column(
-            children: [
-              Expanded(
-                child: pageView(ref),
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              smoothPage(),
-              SizedBox(
-                height: 100.h,
-              ),
-              Align(
-                  alignment: Alignment.bottomCenter,
-                  child: ReuseableButton(
-                    minimumSize: Size(300.w, 40.h),
-                    bgcolor: kPrimaryVoiletColor,
-                    text: current == 2 ? "Sign Up" : "Continue",
-                    textcolor: kvverylightColor,
-                    ontap: () {
-                      if (current == 2) {
-                        context.go('/signup');
-                      } else {
-                        controller.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeIn);
-                      }
-                    },
-                  )),
-              SizedBox(
-                height: 10.h,
-              ),
-              current == 2
-                  ? Align(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 16.w,
+              vertical: 16.h,
+            ),
+            child: Center(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: pageView(ref),
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  smoothPage(),
+                  SizedBox(
+                    height: 100.h,
+                  ),
+                  Align(
                       alignment: Alignment.bottomCenter,
                       child: ReuseableButton(
                         minimumSize: Size(300.w, 40.h),
-                        text: "Login",
-                        textcolor: kPrimaryVoiletColor,
+                        bgcolor: kPrimaryVoiletColor,
+                        text: current == 2 ? "Sign Up" : "Continue",
+                        textcolor: kvverylightColor,
                         ontap: () {
-                          context.go('/login');
+                          if (current == 2) {
+                            context.go('/signup');
+                          } else {
+                            controller.nextPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeIn);
+                          }
                         },
-                        bgcolor: kvveryViloetlightColor,
-                      ))
-                  : Container(height: 40.h)
-            ],
+                      )),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  current == 2
+                      ? Align(
+                          alignment: Alignment.bottomCenter,
+                          child: ReuseableButton(
+                            minimumSize: Size(300.w, 40.h),
+                            text: "Login",
+                            textcolor: kPrimaryVoiletColor,
+                            ontap: () {
+                              context.go('/login');
+                            },
+                            bgcolor: kvveryViloetlightColor,
+                          ))
+                      : Container(height: 40.h)
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
-    ));
+        ));
   }
 
   SmoothPageIndicator smoothPage() {

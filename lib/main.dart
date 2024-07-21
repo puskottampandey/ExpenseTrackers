@@ -1,4 +1,3 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:expensetracker/global/connection_check/connection_controller.dart';
 import 'package:expensetracker/routes/router.dart';
 import 'package:flutter/material.dart';
@@ -30,18 +29,3 @@ class MyApp extends ConsumerWidget {
         });
   }
 }
-
-
-// class NetworkListener extends ConsumerWidget {
-//   final Widget child;
-
-//   const NetworkListener({
-//     required this.child,
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     return child;
-//   }
-// }

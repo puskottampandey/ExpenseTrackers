@@ -1,11 +1,11 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:circular_menu/circular_menu.dart';
-import 'package:expensetracker/constants.dart';
+import 'package:expensetracker/constants/constants.dart';
 import 'package:expensetracker/features/home_screen/views/budget/budget_screen.dart';
 import 'package:expensetracker/features/home_screen/views/home/home_screen.dart';
 import 'package:expensetracker/features/home_screen/views/profile/profile_screen.dart';
 import 'package:expensetracker/features/home_screen/views/transaction/transaction_screen.dart';
-import 'package:expensetracker/global/reuseable/image_path.dart';
+import 'package:expensetracker/constants/image_path.dart';
 import 'package:expensetracker/global/reuseable/scaffoldscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

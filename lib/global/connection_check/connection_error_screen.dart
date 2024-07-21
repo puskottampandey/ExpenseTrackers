@@ -1,7 +1,7 @@
-import 'package:expensetracker/constants.dart';
+import 'package:expensetracker/constants/constants.dart';
 import 'package:expensetracker/global/connection_check/connection_controller.dart';
 import 'package:expensetracker/global/reuseable/button.dart';
-import 'package:expensetracker/global/reuseable/image_path.dart';
+import 'package:expensetracker/constants/image_path.dart';
 import 'package:expensetracker/global/reuseable/scaffoldscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:expensetracker/constants.dart';
+import 'package:expensetracker/constants/constants.dart';
 import 'package:expensetracker/global/connection_check/connection_controller.dart';
+import 'package:expensetracker/global/reuseable/scaffoldscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,9 +33,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kPrimaryVoiletColor,
-      body: Stack(
+    return ReuseableScaffold(
+      changeColor: true,
+      color: kPrimaryVoiletColor,
+      child: Stack(
         children: [
           blurCircle(),
           Center(

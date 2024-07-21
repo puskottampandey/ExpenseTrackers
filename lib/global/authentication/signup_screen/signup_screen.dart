@@ -1,6 +1,6 @@
-import 'package:expensetracker/constants.dart';
+import 'package:expensetracker/constants/constants.dart';
 import 'package:expensetracker/global/reuseable/button.dart';
-import 'package:expensetracker/global/reuseable/image_path.dart';
+import 'package:expensetracker/constants/image_path.dart';
 import 'package:expensetracker/global/reuseable/scaffoldscreen.dart';
 import 'package:expensetracker/global/reuseable/textformfield.dart';
 import 'package:flutter/material.dart';

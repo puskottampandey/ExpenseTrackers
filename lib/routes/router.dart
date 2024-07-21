@@ -11,7 +11,7 @@ import 'package:expensetracker/global/authentication/login_screen/login_sceen.da
 import 'package:expensetracker/global/authentication/signup_screen/signup_screen.dart';
 import 'package:expensetracker/global/connection_check/connection_error_screen.dart';
 import 'package:expensetracker/global/onboarding/onboarding_screen.dart';
-import 'package:expensetracker/global/splash_screen.dart';
+import 'package:expensetracker/global/splash/splash_screen.dart';
 import 'package:expensetracker/routes/route_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';

@@ -1,4 +1,4 @@
-import 'package:expensetracker/constants.dart';
+import 'package:expensetracker/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -352,14 +352,14 @@ class PassWordValidation extends StatelessWidget {
   final Color? inActiveColor;
   final Color? activeColor;
   const PassWordValidation({
-    Key? key,
+    super.key,
     @required this.passCheck,
     @required this.requirementText,
     this.inActiveIcon = Icons.circle,
     this.activeIcon = Icons.circle,
     this.inActiveColor = Colors.grey,
     this.activeColor = Colors.green,
-  }) : super(key: key);
+  });
   @override
   Widget build(BuildContext context) {
     return Padding(
