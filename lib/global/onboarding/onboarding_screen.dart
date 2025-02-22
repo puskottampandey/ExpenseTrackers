@@ -39,64 +39,63 @@ class OnboardingScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final current = ref.watch(currentPage);
     return ReuseableScaffold(
-        light: true,
         child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 16.w,
-              vertical: 16.h,
-            ),
-            child: Center(
-              child: Column(
-                children: [
-                  Expanded(
-                    child: pageView(ref),
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  smoothPage(),
-                  SizedBox(
-                    height: 100.h,
-                  ),
-                  Align(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 16.w,
+          vertical: 16.h,
+        ),
+        child: Center(
+          child: Column(
+            children: [
+              Expanded(
+                child: pageView(ref),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              smoothPage(),
+              SizedBox(
+                height: 100.h,
+              ),
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ReuseableButton(
+                    minimumSize: Size(300.w, 40.h),
+                    bgcolor: kPrimaryVoiletColor,
+                    text: current == 2 ? "Sign Up" : "Continue",
+                    textcolor: kvverylightColor,
+                    ontap: () {
+                      if (current == 2) {
+                        context.go('/signup');
+                      } else {
+                        controller.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeIn);
+                      }
+                    },
+                  )),
+              SizedBox(
+                height: 10.h,
+              ),
+              current == 2
+                  ? Align(
                       alignment: Alignment.bottomCenter,
                       child: ReuseableButton(
                         minimumSize: Size(300.w, 40.h),
-                        bgcolor: kPrimaryVoiletColor,
-                        text: current == 2 ? "Sign Up" : "Continue",
-                        textcolor: kvverylightColor,
+                        text: "Login",
+                        textcolor: kPrimaryVoiletColor,
                         ontap: () {
-                          if (current == 2) {
-                            context.go('/signup');
-                          } else {
-                            controller.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.easeIn);
-                          }
+                          context.go('/login');
                         },
-                      )),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  current == 2
-                      ? Align(
-                          alignment: Alignment.bottomCenter,
-                          child: ReuseableButton(
-                            minimumSize: Size(300.w, 40.h),
-                            text: "Login",
-                            textcolor: kPrimaryVoiletColor,
-                            ontap: () {
-                              context.go('/login');
-                            },
-                            bgcolor: kvveryViloetlightColor,
-                          ))
-                      : Container(height: 40.h)
-                ],
-              ),
-            ),
+                        bgcolor: kvveryViloetlightColor,
+                      ))
+                  : Container(height: 40.h)
+            ],
           ),
-        ));
+        ),
+      ),
+    ));
   }
 
   SmoothPageIndicator smoothPage() {
