@@ -1,0 +1,2 @@
+/home/puskottam/Documents/ExpenseTracker/expensetracker/android/app/.cxx/Debug/m1o06l1e/x86_64/CMakeFiles/edit_cache.dir
+/home/puskottam/Documents/ExpenseTracker/expensetracker/android/app/.cxx/Debug/m1o06l1e/x86_64/CMakeFiles/rebuild_cache.dir
