@@ -1,0 +1,59 @@
+{
+ 
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "crm",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "reuse (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "reuse (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+
+        {
+            "name": "reuse [release]",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor",
+                "prod"
+            ]
+        },
+        {
+            "name": "reuse [prod]",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor",
+                "prod"
+            ]
+        },
+
+        
+        {
+            "name": "reuse [dev]",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "program": "lib/main_dev.dart",
+            "args": [
+                "--flavor",
+                "prod"
+            ]
+        }
+    ]
+}

@@ -52,6 +52,35 @@ android {
         multiDexEnabled true
     }
 
+      flavorDimensions "app"
+     productFlavors {
+        
+
+        prod {
+            dimension "app"
+            applicationId "com.example.expensetracker"
+            versionCode 1
+            versionName "0.0.1"
+            resValue "string", "app_name", "expense"
+        }
+
+        stage {
+            dimension "app"
+            applicationId "com.example.expensetracker"
+            versionCode 1
+            versionName "0.0.1"
+            resValue "string", "app_name", "expense [stage]"
+        }
+        
+        dev {
+            dimension "app"
+            applicationId "com.example.expensetracker"
+            versionCode 1
+            versionName "0.0.1"
+            resValue "string", "app_name", "expense [dev]"
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

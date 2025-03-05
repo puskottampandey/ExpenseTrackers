@@ -13,7 +13,7 @@ class ConnectionErrorScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(networkControllerProvider);
+    // ref.watch(networkControllerProvider);
     return PopScope(
       canPop: false,
       onPopInvoked: (pop) async {

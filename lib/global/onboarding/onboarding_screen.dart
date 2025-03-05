@@ -21,16 +21,16 @@ class OnboardingScreen extends ConsumerWidget {
 
   List<Onboarding> onboarding = [
     Onboarding(
-        image: ImagePath.animation2,
+        image: ImagePath.image1,
         title: "Gain total control of your money",
         des: "Become your own money manager and make every cent count"),
     Onboarding(
-        image: ImagePath.animation1,
+        image: ImagePath.image2,
         title: "Know where your money goes",
         des:
             "Track your transaction easily, with categories and financial report"),
     Onboarding(
-        image: ImagePath.confirmLogo,
+        image: ImagePath.image3,
         title: "Planning ahead",
         des: "Setup your budget for each category so you in control"),
   ];
@@ -122,7 +122,7 @@ class OnboardingScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Lottie.asset(
+              Image.asset(
                 data.image.toString(),
               ),
               Text(
